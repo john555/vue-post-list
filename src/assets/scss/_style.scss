@@ -19,7 +19,8 @@ body {
   &::before {
     content: "";
     display: block;
-    height: 20rem;
+    height: 12vw;
+    min-height: 20rem;
     width: 150%;
     background: $purple;
     position: absolute;

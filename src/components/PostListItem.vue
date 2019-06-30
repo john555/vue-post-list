@@ -1,0 +1,75 @@
+<template>
+  <li class="post-list-item">
+    <span class="post-list-item__title">Item 1</span>
+    <div class="post-list-item__buttons">
+      <button class="post-list-item__button post-list-item__button--up">
+        <span class="sr-hidden">move up</span>
+      </button>
+      <button class="post-list-item__button post-list-item__button--down">
+        <span class="sr-hidden">move down</span>
+      </button>
+    </div>
+  </li>
+</template>
+
+<script>
+export default {};
+</script>
+
+<style lang="scss" scoped>
+.post-list-item {
+  height: 9rem;
+  background: white;
+  box-shadow: 0.1rem 0.3rem 0.5rem rgba(0, 0, 0, 0.05);
+  border-radius: 0.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.post-list-item + .post-list-item {
+  margin-top: 2.4rem;
+}
+
+.post-list-item__title {
+  font-size: 1.8rem;
+  margin-left: 2rem;
+}
+
+.post-list-item__buttons {
+  align-self: flex-start;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  flex: 0 0 6rem;
+}
+
+.post-list-item__button {
+  flex-grow: 1;
+  background: none;
+  border: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: currentColor;
+
+  &::after {
+    content: "";
+    display: block;
+    width: 0.7rem;
+    height: 0.7rem;
+    border-style: solid;
+    border-width: 2px;
+    border-color: currentColor currentColor transparent transparent;
+    opacity: 0.6;
+  }
+
+  &.post-list-item__button--up::after {
+    transform: rotate(-45deg);
+  }
+
+  &.post-list-item__button--down::after {
+    transform: rotate(135deg);
+  }
+}
+</style>

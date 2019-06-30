@@ -18,9 +18,9 @@ export default {};
 
 <style lang="scss" scoped>
 .post-list-item {
+  @include box-shadow-1;
   height: 9rem;
   background: white;
-  box-shadow: 0.1rem 0.3rem 0.5rem rgba(0, 0, 0, 0.05);
   border-radius: 0.4rem;
   display: flex;
   align-items: center;

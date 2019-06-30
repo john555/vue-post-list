@@ -22,8 +22,8 @@ export default {
 .action-list {
   background: white;
   border-radius: 0.4rem;
-  box-shadow: 0.1rem 0.3rem 0.5rem rgba(0, 0, 0, 0.1);
   border-radius: 0.4rem;
+  @include box-shadow;
 }
 
 .action-list__title {
@@ -34,14 +34,14 @@ export default {
 
 .action-list__list-wrapper {
   padding: 2rem;
-  background: #f2f2f2;
+  background: $gray-1;
 }
 
 .action-list__list {
+  @include box-shadow;
   margin: 0;
   padding: 0rem;
   list-style: none;
   background: white;
-  box-shadow: 0.1rem 0.3rem 0.5rem rgba(0, 0, 0, 0.1);
 }
 </style>

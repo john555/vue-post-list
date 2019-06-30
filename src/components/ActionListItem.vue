@@ -16,11 +16,11 @@
 }
 
 .action-list-item + .action-list-item {
-  border-top: 1px solid #e1e1e1;
+  border-top: 1px solid $gray-2;
 }
 
 .action-list-item__button {
-  background-color: #02ff86;
+  background-color: $green;
   padding: 1rem 2rem;
   font: inherit;
   font-size: 1.4rem;

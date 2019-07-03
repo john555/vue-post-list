@@ -1,11 +1,19 @@
 <template>
   <li class="post-list-item">
-    <span class="post-list-item__title">Item 1</span>
+    <span class="post-list-item__title">{{ title }}</span>
     <div class="post-list-item__buttons">
-      <button class="post-list-item__button post-list-item__button--up">
+      <button
+        class="post-list-item__button post-list-item__button--up"
+        @click="moveUp"
+        v-if="!isFirstItem"
+      >
         <span class="sr-hidden">move up</span>
       </button>
-      <button class="post-list-item__button post-list-item__button--down">
+      <button
+        class="post-list-item__button post-list-item__button--down"
+        @click="moveDown"
+        v-if="!isLastItem"
+      >
         <span class="sr-hidden">move down</span>
       </button>
     </div>
@@ -13,7 +21,15 @@
 </template>
 
 <script>
-export default {};
+export default {
+  props: {
+    isFirstItem: Boolean,
+    isLastItem: Boolean,
+    title: String,
+    moveUp: Function,
+    moveDown: Function
+  }
+};
 </script>
 
 <style lang="scss" scoped>

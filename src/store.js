@@ -9,16 +9,24 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    posts: []
+    posts: [],
+    actions: []
   },
+
   getters: {
-    posts: state => state.posts
+    posts: state => state.posts,
+    actions: state => state.actions
   },
+
   mutations: {
     setPosts(state, posts) {
       state.posts = posts;
+    },
+    addAction(state, action) {
+      state.actions.push(action);
     }
   },
+
   actions: {
     async fetchPosts({ commit }) {
       const localData = localStorage.getItem(LS_POSTS_KEY);
@@ -30,10 +38,15 @@ export default new Vuex.Store({
       try {
         const response = await axios.get(`${VUE_APP_API_BASE_URL}/posts`);
         localStorage.setItem(LS_POSTS_KEY, JSON.stringify(response.data));
+
         commit("setPosts", response.data);
       } catch (error) {
         console.error(error);
       }
+    },
+
+    addAction({ commit }, action) {
+      commit("addAction", action);
     }
   }
 });

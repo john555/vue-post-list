@@ -8,6 +8,8 @@
         :title="post.title"
         :isFirstItem="index === 0"
         :isLastItem="index === posts.length - 1"
+        :moveUp="moveAction.bind(null, UP, index)"
+        :moveDown="moveAction.bind(null, DOWN, index)"
       ></post-list-item>
     </ul>
   </section>
@@ -15,15 +17,38 @@
 <script>
 import { mapGetters, mapActions } from "vuex";
 import PostListItem from "./PostListItem.vue";
+import { UP, DOWN } from "@/constants/postMoveDirection";
 
 export default {
   components: {
     PostListItem
   },
   methods: {
-    ...mapActions(["fetchPosts"])
+    moveAction(direction, index) {
+      const from = index;
+      let to;
+
+      if (direction === UP) {
+        to = index - 1;
+      }
+
+      if (direction === DOWN) {
+        to = index + 1;
+      }
+
+      this.addAction({
+        from,
+        to,
+        description: `Moved Post ${this.posts[index].id} from index ${from} to index ${to}`
+      });
+    },
+    ...mapActions(["fetchPosts", "addAction"])
   },
-  computed: mapGetters(["posts"]),
+  computed: {
+    UP: () => UP,
+    DOWN: () => DOWN,
+    ...mapGetters(["posts"])
+  },
   mounted() {
     this.fetchPosts();
   }

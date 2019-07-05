@@ -1,27 +1,10 @@
-import Vue from "vue";
-import Vuex from "vuex";
 import { shallowMount } from "@vue/test-utils";
 import PostList from "@/components/PostList";
-
-Vue.use(Vuex);
+import { mockStore } from "../mockStore";
 
 describe("components/PostList.vue", () => {
-  let store;
-
-  beforeEach(() => {
-    const state = {
-      posts: []
-    };
-    store = new Vuex.Store({
-      getters: {
-        posts: state => state.posts
-      },
-      state
-    });
-  });
-
   it("renders a vue instance", () => {
-    const wrapper = shallowMount(PostList, { store });
+    const wrapper = shallowMount(PostList, { store: mockStore });
     expect(wrapper.isVueInstance()).toBe(true);
   });
 });

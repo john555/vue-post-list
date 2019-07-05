@@ -1,11 +1,18 @@
 <template>
   <li class="action-list-item">
-    <span class="action-list-item__action"
-      >Moved Post 1 from index 2 to index 1</span
-    >
+    <span class="action-list-item__action">{{ description }}</span>
     <button class="action-list-item__button">Time Travel</button>
   </li>
 </template>
+
+<script>
+export default {
+  props: {
+    description: String,
+    index: Number
+  }
+};
+</script>
 
 <style lang="scss" scoped>
 .action-list-item {

@@ -2,19 +2,28 @@
   <section class="action-list">
     <h2 class="action-list__title">List of Actions Commited</h2>
     <div class="action-list__list-wrapper">
-      <ul class="action-list__list">
-        <action-list-item></action-list-item>
-        <action-list-item></action-list-item>
+      <div class="no-actions" v-if="actions.length === 0">
+        No actions yet.
+      </div>
+      <ul class="action-list__list" v-if="actions.length > 0">
+        <action-list-item
+          v-for="(action, index) in actions"
+          :description="action.description"
+          :key="index"
+        ></action-list-item>
       </ul>
     </div>
   </section>
 </template>
 <script>
+import { mapGetters } from "vuex";
 import ActionListItem from "./ActionListItem";
+
 export default {
   components: {
     ActionListItem
-  }
+  },
+  computed: mapGetters(["actions"])
 };
 </script>
 
@@ -43,5 +52,14 @@ export default {
   padding: 0rem;
   list-style: none;
   background: white;
+}
+
+.no-actions {
+  padding: 1.9rem;
+  display: flex;
+  align-items: center;
+  background: $white;
+  opacity: 0.7;
+  @include box-shadow;
 }
 </style>

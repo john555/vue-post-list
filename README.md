@@ -8,6 +8,10 @@ git clone https://github.com/john555/vue-post-list.git
 cd vue-post-list
 yarn install
 ```
+Create a `.env.local` and add the following config.
+```
+VUE_APP_API_BASE_URL=https://jsonplaceholder.typicode.com
+```
 
 ### Compiles and hot-reloads for development
 ```

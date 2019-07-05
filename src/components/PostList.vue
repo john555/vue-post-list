@@ -2,15 +2,17 @@
   <section class="post-list">
     <h2 class="post-list__title">Sortable Post List</h2>
     <ul class="post-list__list">
-      <post-list-item
-        v-for="(post, index) in posts"
-        :key="post.id"
-        :title="post.title"
-        :isFirstItem="index === 0"
-        :isLastItem="index === posts.length - 1"
-        :moveUp="moveAction.bind(null, UP, index)"
-        :moveDown="moveAction.bind(null, DOWN, index)"
-      ></post-list-item>
+      <transition-group name="slide">
+        <post-list-item
+          v-for="(post, index) in posts"
+          :key="post.id"
+          :title="`Post ${post.id}`"
+          :isFirstItem="index === 0"
+          :isLastItem="index === posts.length - 1"
+          :moveUp="moveAction.bind(null, UP, index)"
+          :moveDown="moveAction.bind(null, DOWN, index)"
+        ></post-list-item>
+      </transition-group>
     </ul>
   </section>
 </template>
@@ -66,5 +68,9 @@ export default {
     list-style: none;
     margin: 0;
   }
+}
+
+.slide-move {
+  transition: transform 200ms;
 }
 </style>

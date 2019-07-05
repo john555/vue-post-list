@@ -4,6 +4,7 @@ import axios from "axios";
 
 import { VUE_APP_API_BASE_URL } from "./constants/api";
 import { LS_POSTS_KEY } from "./constants/localstorage";
+import { applyActions } from "./helpers/applyActions";
 
 Vue.use(Vuex);
 
@@ -14,7 +15,7 @@ export default new Vuex.Store({
   },
 
   getters: {
-    posts: state => state.posts,
+    posts: state => applyActions(state.posts, state.actions),
     actions: state => state.actions
   },
 

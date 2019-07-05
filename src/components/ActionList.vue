@@ -10,20 +10,24 @@
           v-for="(action, index) in actions"
           :description="action.description"
           :key="index"
+          :clickHandler="() => setLastActionIndex(index)"
         ></action-list-item>
       </ul>
     </div>
   </section>
 </template>
 <script>
-import { mapGetters } from "vuex";
+import { mapGetters, mapActions } from "vuex";
 import ActionListItem from "./ActionListItem";
 
 export default {
   components: {
     ActionListItem
   },
-  computed: mapGetters(["actions"])
+  computed: mapGetters(["actions"]),
+  methods: {
+    ...mapActions(["setLastActionIndex"])
+  }
 };
 </script>
 

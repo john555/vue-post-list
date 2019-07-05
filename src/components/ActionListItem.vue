@@ -1,7 +1,9 @@
 <template>
   <li class="action-list-item">
     <span class="action-list-item__action">{{ description }}</span>
-    <button class="action-list-item__button">Time Travel</button>
+    <button class="action-list-item__button" @click="clickHandler">
+      Time Travel
+    </button>
   </li>
 </template>
 
@@ -9,7 +11,8 @@
 export default {
   props: {
     description: String,
-    index: Number
+    index: Number,
+    clickHandler: Function
   }
 };
 </script>

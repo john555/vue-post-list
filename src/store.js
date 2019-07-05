@@ -11,11 +11,13 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     posts: [],
-    actions: []
+    actions: [],
+    lastActionIndex: -1
   },
 
   getters: {
-    posts: state => applyActions(state.posts, state.actions),
+    posts: state =>
+      applyActions(state.posts, state.actions, state.lastActionIndex),
     actions: state => state.actions
   },
 
@@ -24,7 +26,11 @@ export default new Vuex.Store({
       state.posts = posts;
     },
     addAction(state, action) {
+      state.lastActionIndex = -1;
       state.actions.push(action);
+    },
+    setLastActionIndex(state, index) {
+      state.lastActionIndex = index;
     }
   },
 
@@ -48,6 +54,10 @@ export default new Vuex.Store({
 
     addAction({ commit }, action) {
       commit("addAction", action);
+    },
+
+    setLastActionIndex({ commit }, index) {
+      commit("setLastActionIndex", index);
     }
   }
 });

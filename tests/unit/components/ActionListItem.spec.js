@@ -3,7 +3,8 @@ import ActionListItem from "@/components/ActionListItem";
 
 describe("components/ActionListItem.vue", () => {
   it("renders a vue instance", () => {
-    const wrapper = shallowMount(ActionListItem);
+    const propsData = { clickHandler: jest.fn() };
+    const wrapper = shallowMount(ActionListItem, { propsData });
     expect(wrapper.isVueInstance()).toBe(true);
   });
 });

@@ -18,7 +18,8 @@ export default new Vuex.Store({
   getters: {
     posts: state =>
       applyActions(state.posts, state.actions, state.lastActionIndex),
-    actions: state => state.actions
+    actions: state => state.actions,
+    lastActionIndex: state => state.lastActionIndex
   },
 
   mutations: {

@@ -1,7 +1,11 @@
 # post-list
 
+This is a sortable list of posts with ability to time travel to a certain action.
+
 ## Project setup
 ```
+git clone https://github.com/john555/vue-post-list.git
+cd vue-post-list
 yarn install
 ```
 
@@ -14,20 +18,14 @@ yarn run serve
 ```
 yarn run build
 ```
-
-### Run your tests
+### Run your unit tests
 ```
-yarn run test
+yarn run test:unit
 ```
 
 ### Lints and fixes files
 ```
 yarn run lint
-```
-
-### Run your unit tests
-```
-yarn run test:unit
 ```
 
 ### Customize configuration

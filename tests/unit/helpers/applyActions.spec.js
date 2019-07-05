@@ -27,10 +27,24 @@ describe("helpers/applyActions", () => {
     expect(missMatchCount).toBeGreaterThan(0);
   });
 
-  it("should swap indexes", () => {
+  it("should swap posts indexes", () => {
     const firstAction = { from: 0, to: 1 };
     const secondAction = { from: 2, to: 0 };
     const result = applyActions(posts, [firstAction, secondAction]);
+    expect(result[0].id).toEqual(3);
+    expect(result[1].id).toEqual(1);
+    expect(result[2].id).toEqual(2);
+  });
+
+  it("should swap posts indexes up to a certain action index", () => {
+    const firstAction = { from: 0, to: 1 };
+    const secondAction = { from: 2, to: 0 };
+    const thirdAction = { from: 2, to: 1 };
+    const result = applyActions(
+      posts,
+      [firstAction, secondAction, thirdAction],
+      1
+    );
     expect(result[0].id).toEqual(3);
     expect(result[1].id).toEqual(1);
     expect(result[2].id).toEqual(2);
